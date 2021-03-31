@@ -1,0 +1,56 @@
+_schema-version: "3.2"
+ID: CRUD_Parceiros
+version: 0.0.1
+modules:
+- name: crud-parceiros-approuter
+  type: approuter.nodejs
+  path: crud-parceiros-approuter
+  requires:
+  - name: CRUD_Parceiros_html_repo_runtime
+  - name: dest_CRUD_Parceiros
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: CRUD_Parceiros_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: CRUD_Parceiros_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - app-content.zip
+      name: app
+      target-path: resources/
+- name: app
+  type: html5
+  path: app
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: CRUD_Parceiros_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: CRUD_Parceiros_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dest_CRUD_Parceiros
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install

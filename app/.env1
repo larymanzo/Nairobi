@@ -1,0 +1,1 @@
+destinations=[{"name":"api-cadastral","url":"https://api-cadastral.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]
