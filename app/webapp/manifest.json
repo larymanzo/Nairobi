@@ -92,6 +92,11 @@
                     "name": "CadastroParceiros",
                     "pattern": "CadastroParceiros",
                     "target": ["Menu", "CadastroParceiros"]
+                },
+                {
+                    "name": "ConsultaParceiros",
+                    "pattern": "ConsultaParceiros",
+                    "target": ["Menu", "ConsultaParceiros"]
                 }
 
             ],
@@ -117,6 +122,14 @@
 					"clearControlAggregation": false,
 					"viewId": "cadastroparceiros",
                     "viewName": "CadastroParceiros",
+                    "controlAggregation": "detailPages"
+                },
+                "ConsultaParceiros": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "consultaparceiros",
+                    "viewName": "ConsultaParceiros",
                     "controlAggregation": "detailPages"
                 }
 			}

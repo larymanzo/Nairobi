@@ -11,7 +11,7 @@ xmlns="sap.m">
                 <List>
                     <items>
                         <StandardListItem title="Cadastro de Parceiros" type="Active"/>
-                        <StandardListItem title="Consulta de Parceiros" type="Active"/>
+                        <StandardListItem title="Consulta de Parceiros" type="Active" press="onNavConsultaParceiros"/>
                     </items>
                 </List>
             </VBox>

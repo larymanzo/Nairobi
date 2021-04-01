@@ -1,15 +1,19 @@
 sap.ui.define([
-		"sap/ui/core/mvc/Controller"
+		"./BaseController"
 	],
 	/**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-	function (Controller) {
+	function (BaseController) {
 		"use strict";
 
-		return Controller.extend("treinamento.l4e.app.controller.Menu", {
+		return BaseController.extend("treinamento.l4e.app.controller.Menu", {
 			onInit: function () {
 
-			}
+            },
+            
+            onNavConsultaParceiros: function(){
+                this.getRouter().navTo("ConsultaParceiros");
+            }
 		});
 	});
