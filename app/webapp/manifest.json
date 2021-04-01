@@ -97,6 +97,11 @@
                     "name": "ConsultaParceiros",
                     "pattern": "ConsultaParceiros",
                     "target": ["Menu", "ConsultaParceiros"]
+                },
+                {
+                    "name": "EditarParceiros",
+                    "pattern": "EditarParceiros/{id}",
+                    "target": ["Menu", "CadastroParceiros"]
                 }
 
             ],

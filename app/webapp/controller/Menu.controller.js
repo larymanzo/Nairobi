@@ -12,8 +12,14 @@ sap.ui.define([
 
             },
             
+            // Função do botão de "Consulta de Parceiros"
             onNavConsultaParceiros: function(){
                 this.getRouter().navTo("ConsultaParceiros");
+            },
+            
+            // Função do botão de "Cadastro de Parceiros"
+            onNavCadastroParceiros: function(){
+                this.getRouter().navTo("CadastroParceiros");
             }
 		});
 	});

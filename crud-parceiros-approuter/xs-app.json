@@ -1,4 +1,18 @@
 {
+  "welcomeFile": "app/index.html",
   "authenticationMethod": "none",
-  "routes": []
+  "routes": [
+    {
+      "source": "^/api/(.*)$",
+      "target": "$1",
+      "destination": "api-cadastral",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/app(.*)$",
+      "target": "$1",
+      "authenticationType": "none",
+      "localDir": "app"
+    }
+  ]
 }

@@ -5,13 +5,13 @@ displayBlock="true"
 xmlns="sap.m">
 	<Page showHeader="true" title="Consulta de Parceiros" titleAlignment="Center">
         <content>
-            <Table mode="Delete" delete="onExcluir" items="{path: 'Parceiros>/'}">
+            <Table mode="Delete" id="tableParceiros" delete="onExcluir" items="{path: 'Parceiros>/'}">
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
                             <Title text="Parceiros" level="H2" />
                             <ToolbarSpacer ></ToolbarSpacer>
-                            <SearchField placeholder="Digite o nome de um parceiro" width="50%" ></SearchField>
+                            <SearchField placeholder="Digite o nome de um parceiro" width="50%" liveChange="onSearch" ></SearchField>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
@@ -36,7 +36,7 @@ xmlns="sap.m">
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Detail">
+                    <ColumnListItem type="Detail" detailPress="onNavEditarParceiro">
                         <cells>
                             <Text text="{Parceiros>id}"></Text>
                             <Text text="{Parceiros>nome}"></Text>

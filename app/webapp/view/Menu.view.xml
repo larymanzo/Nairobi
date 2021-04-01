@@ -10,7 +10,7 @@ xmlns="sap.m">
                 <Image src="images/logo_final.png" width="100%" height="100%"/>
                 <List>
                     <items>
-                        <StandardListItem title="Cadastro de Parceiros" type="Active"/>
+                        <StandardListItem title="Cadastro de Parceiros" type="Active" press="onNavCadastroParceiros"/>
                         <StandardListItem title="Consulta de Parceiros" type="Active" press="onNavConsultaParceiros"/>
                     </items>
                 </List>

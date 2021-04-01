@@ -22,7 +22,7 @@ xmlns="sap.m">
                                     <Label text="Nome" design="Bold"></Label>
                                 </form:label>
                                 <form:fields>
-                                    <Input ></Input>
+                                    <Input value="{Parceiro>/nome}"></Input>
                                 </form:fields>
                             </form:FormElement>
 
@@ -31,7 +31,7 @@ xmlns="sap.m">
                                     <Label text="Tipo" design="Bold"></Label>
                                 </form:label>
                                 <form:fields>
-                                    <ComboBox >
+                                    <ComboBox selectedKey="{Parceiro>/tipo}">
                                         <items>
                                             <core:Item key="Fornecedor" text="Fornecedor" />
                                             <core:Item key="Prestador Serviço" text="Prestador Serviço" />
@@ -46,7 +46,7 @@ xmlns="sap.m">
                                     <Label text="Status" design="Bold"></Label>
                                 </form:label>
                                 <form:fields>
-                                    <Switch type="AcceptReject" ></Switch>
+                                    <Switch type="AcceptReject" change="onChangeSwitch" state="{= ${Parceiro>/status} === 'A' ? true : false}"></Switch>
                                 </form:fields>
                             </form:FormElement>
                         
@@ -59,8 +59,8 @@ xmlns="sap.m">
         <footer>
             <OverflowToolbar >
                 <ToolbarSpacer/>
-                <Button text="Confirmar" type="Emphasized" />
-                <Button text="Cancelar" type="Reject"/>
+                <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
+                <Button text="Cancelar" type="Reject" press="onCancelar"/>
                 <ToolbarSpacer/>
             </OverflowToolbar>
         </footer>
