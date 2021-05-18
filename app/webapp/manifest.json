@@ -86,22 +86,22 @@
                 {
                     "name": "Menu",
                     "pattern": "",
-                    "target": ["Menu", "CadastroParceiros"]
+                    "target": ["Menu", "CadastroVoluntarios"]
                 },
                 {
-                    "name": "CadastroParceiros",
-                    "pattern": "CadastroParceiros",
-                    "target": ["Menu", "CadastroParceiros"]
+                    "name": "CadastroVoluntarios",
+                    "pattern": "CadastroVoluntarios",
+                    "target": ["Menu", "CadastroVoluntarios"]
                 },
                 {
-                    "name": "ConsultaParceiros",
-                    "pattern": "ConsultaParceiros",
-                    "target": ["Menu", "ConsultaParceiros"]
+                    "name": "ConsultaVoluntarios",
+                    "pattern": "ConsultaVoluntarios",
+                    "target": ["Menu", "ConsultaVoluntarios"]
                 },
                 {
-                    "name": "EditarParceiros",
-                    "pattern": "EditarParceiros/{id}",
-                    "target": ["Menu", "CadastroParceiros"]
+                    "name": "EditarVoluntarios",
+                    "pattern": "EditarVoluntarios/{id}",
+                    "target": ["Menu", "CadastroVoluntarios"]
                 }
 
             ],
@@ -111,8 +111,7 @@
 					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewId": "menu",
-                    "viewName": "Menu",
-                    "controlAggregation": "masterPages"
+                    "viewName": "Menu"
                 },
 				"TargetApp": {
 					"viewType": "XML",
@@ -121,21 +120,25 @@
 					"viewId": "App",
 					"viewName": "App"
                 },
-                "CadastroParceiros": {
+                "CadastroVoluntarios": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "cadastroparceiros",
-                    "viewName": "CadastroParceiros",
-                    "controlAggregation": "detailPages"
+					"viewId": "cadastroVoluntarios",
+                    "viewName": "CadastroVoluntarios",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
                 },
-                "ConsultaParceiros": {
+                "ConsultaVoluntarios": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "consultaparceiros",
-                    "viewName": "ConsultaParceiros",
-                    "controlAggregation": "detailPages"
+					"viewId": "consultaVoluntarios",
+                    "viewName": "ConsultaVoluntarios",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
                 }
 			}
 		}

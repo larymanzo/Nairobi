@@ -20,6 +20,26 @@
       },
       "envFile": "${workspaceFolder}/app/.env1",
       "preLaunchTask": "Build CRUD_Parceiros"
+    },
+    {
+      "name": "Run TreinamentoL4E-app",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/crud-parceiros-approuter/node_modules/@sap/html5-repo-mock/index.js",
+      "args": [
+        "--standalone",
+        "/treinamentol4eapp/index.html",
+        "--ui5",
+        "{\"version\":\".\"}"
+      ],
+      "cwd": "${workspaceFolder}/app",
+      "env": {
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/TreinamentoL4E/app\"}"
+      },
+      "envFile": "${workspaceFolder}/app/.env2",
+      "preLaunchTask": "Build TreinamentoL4E"
     }
   ]
 }

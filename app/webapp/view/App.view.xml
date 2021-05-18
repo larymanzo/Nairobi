@@ -3,6 +3,6 @@ controllerName="treinamento.l4e.app.controller.App"
 xmlns:mvc="sap.ui.core.mvc" 
 displayBlock="true" 
 xmlns="sap.m">
-		<SplitApp id="app">
-        </SplitApp>
+		<App id="app">
+        </App>
 </mvc:View>

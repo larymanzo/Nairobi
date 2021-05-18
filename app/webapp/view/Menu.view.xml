@@ -1,20 +1,23 @@
 <mvc:View 
-controllerName="treinamento.l4e.app.controller.Menu" 
-xmlns:mvc="sap.ui.core.mvc" 
-displayBlock="true" 
-xmlns="sap.m">
-
-    <Page showHeader="true" title="Menu" titleAlignment="Center" >
-        <content>
-            <VBox width="100%">
-                <Image src="images/logo_final.png" width="100%" height="100%"/>
-                <List>
-                    <items>
-                        <StandardListItem title="Cadastro de Parceiros" type="Active" press="onNavCadastroParceiros"/>
-                        <StandardListItem title="Consulta de Parceiros" type="Active" press="onNavConsultaParceiros"/>
-                    </items>
-                </List>
-            </VBox>
-        </content>
-    </Page>
+    controllerName="treinamento.l4e.app.controller.Menu" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout= "sap.ui.layout"
+    xmlns:tnt="sap.tnt">
+    <tnt:ToolPage>
+		<tnt:header>
+			<tnt:ToolHeader class="Header">
+                <ToolbarSpacer width="30%"/> <!-- espaçamento -->
+                <Button id="buttonInicio" text="Inicio" press="onPressInicio"/>
+                <Button id="buttonLocalidades" text="Localidades" press="onPressLocalidades"/>
+                <Button id="buttonVoluntarios" text="Voluntários" press="onPressVoluntarios"/>
+                <Button id="buttonDoacoes" text="Doações" press="onPressDoacoes"/>
+                <ToolbarSpacer width="30%"/> <!-- espaçamento -->
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:mainContents>
+			<NavContainer id="ConteudoMenu">
+			</NavContainer>
+		</tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>
