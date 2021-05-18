@@ -1,0 +1,53 @@
+<mvc:View 
+controllerName="treinamento.l4e.app.controller.ConsultaVoluntarios" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+	<Page showHeader="true" title="Consulta de Voluntarios" titleAlignment="Center">
+        <content>
+            <Table mode="Delete" id="tableVoluntarios" delete="onExcluir" items="{path: 'Voluntarios>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Voluntarios" level="H2" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite o nome de um Voluntario" width="50%" liveChange="onSearch" ></SearchField>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="ID" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Nome" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Tipo" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Data de Criação" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Data de Atualização" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Status" design="Bold"></Label>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Detail" detailPress="onNavEditarVoluntario">
+                        <cells>
+                            <Text text="{Voluntarios>id}"></Text>
+                            <Text text="{Voluntarios>nome}"></Text>
+                            <Text text="{Voluntarios>tipo}"></Text>
+                            <Text text="{Voluntarios>criado}"></Text>
+                            <Text text="{Voluntarios>atualizado}"></Text>
+                            <ObjectStatus text="{= ${Voluntarios>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Voluntarios>status} === 'A' ? 'Success' : 'Error'}"></ObjectStatus>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
