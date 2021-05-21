@@ -102,6 +102,21 @@
                     "name": "EditarVoluntarios",
                     "pattern": "EditarVoluntarios/{id}",
                     "target": ["Menu", "CadastroVoluntarios"]
+                },
+                {
+                    "name": "CadastroDoacoes",
+                    "pattern": "CadastroDoacoes",
+                    "target": ["Menu", "CadastroDoacoes"]
+                },
+                {
+                    "name": "ConsultaDoacoes",
+                    "pattern": "ConsultaDoacoes",
+                    "target": ["Menu", "ConsultaDoacoes"]
+                },
+                {
+                    "name": "EditarDoacoes",
+                    "pattern": "EditarDoacoes/{id}",
+                    "target": ["Menu", "CadastroDoacoes"]
                 }
 
             ],
@@ -136,6 +151,26 @@
 					"clearControlAggregation": false,
 					"viewId": "consultaVoluntarios",
                     "viewName": "ConsultaVoluntarios",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "CadastroDoacoes": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "cadastroDoacoes",
+                    "viewName": "CadastroDoacoes",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "ConsultaDoacoes": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "consultaDoacoes",
+                    "viewName": "ConsultaDoacoes",
                     "controlAggregation": "pages",
                     "parent": "Menu",
                     "controlId": "ConteudoMenu"

@@ -1,69 +1,133 @@
 <mvc:View xmlns:core="sap.ui.core" 
 controllerName="treinamento.l4e.app.controller.CadastroVoluntarios" 
-xmlns:form="sap.ui.layout.form" 
+xmlns:form="sap.ui.layout.form"
+xmlns:l="sap.ui.layout"
+xmlns:u="sap.ui.unified" 
 xmlns:mvc="sap.ui.core.mvc" 
 displayBlock="true" 
-xmlns="sap.m">
+xmlns="sap.m"
+class="viewPadding">
 
-    <Page showHeader="true" title="Cadastro de Voluntarios" titleAlignment="Center">
-        <content>
-            <form:Form >
-                <form:title>
-                    <core:Title text="Preencha os campos necessários" level="H6" ></core:Title>
-                </form:title>
-                <form:layout>
-                    <form:ColumnLayout columnsL="3" columnsM="2" columnsXL="4"></form:ColumnLayout>
-                </form:layout>
-                <form:formContainers> 
-                    <form:FormContainer >
-                        <form:formElements>
-                            <form:FormElement >
-                                <form:label>
-                                    <Label text="Nome" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <Input value="{Voluntario>/nome}"></Input>
-                                </form:fields>
-                            </form:FormElement>
+<Page showHeader="true" title="Cadastro de Voluntarios" titleAlignment="Center">
+    <content>
 
-                            <form:FormElement >
-                                <form:label>
-                                    <Label text="Tipo" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <ComboBox selectedKey="{Voluntario>/tipo}">
-                                        <items>
-                                            <core:Item key="Fornecedor" text="Fornecedor" />
-                                            <core:Item key="Prestador Serviço" text="Prestador Serviço" />
-                                            <core:Item key="Entregador" text="Entregador" />
-                                        </items>
-                                    </ComboBox>
-                                </form:fields>
-                            </form:FormElement>
+        <form:SimpleForm title="Informações Pessoais" editable="true">
+				<Label text="Nome" tooltip="Any character"/>
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: João Abreu de Andrade">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
 
-                             <form:FormElement >
-                                <form:label>
-                                    <Label text="Status" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <Switch type="AcceptReject" change="onChangeSwitch" state="{= ${Voluntario>/status} === 'A' ? true : false}"></Switch>
-                                </form:fields>
-                            </form:FormElement>
-                        
-                        </form:formElements>
-                    </form:FormContainer>
-                
-                </form:formContainers> 
-            </form:Form>
-        </content>
-        <footer>
-            <OverflowToolbar >
-                <ToolbarSpacer/>
-                <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
-                <Button text="Cancelar" type="Reject" press="onCancelar"/>
-                <ToolbarSpacer/>
-            </OverflowToolbar>
-        </footer>
-    </Page>
+				<Label text="Data de aniversário"></Label>
+				 <DatePicker >
+                </DatePicker>
+
+				 <Label text="Identificação"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione a identificação">
+                        <items>
+                            <core:Item key="PJ" text="Pessoa Jurídica" />
+                            <core:Item key="PF" text="Pessoa Física" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Tipo"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="doador" text="Doador" />
+                            <core:Item key="naoDoador" text="Não doador" />
+                        </items>
+                    </ComboBox>
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Endereço" editable="true">
+				<Label text="Rua" tooltip="Any character"/>
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: Enfermeiro geraldo pimentel">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+                <Label text="Número" tooltip="Any character"/>
+				<MaskInput mask="99999" placeholderSymbol="_" placeholder="Coloque o número da casa">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+                <Label text="CEP" tooltip="Any character"/>
+				<MaskInput mask="99999-999" placeholderSymbol="_" placeholder="Coloque o CEP">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+				
+                 <Label text="Latitude"></Label>
+                    <MaskInput mask="99.9999" placeholderSymbol="_" placeholder="Coloque a latitude">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+                <Label text="Longitude"></Label>
+                    <MaskInput mask="99.9999" placeholderSymbol="_" placeholder="Coloque a longitude">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Disponibilidade" editable="true">
+				<Label text="Período disponível"></Label>
+                    <ComboBox selectedKey="{Voluntario>/periodo}" placeholder="Selecione o período">
+                        <items>
+                            <core:Item key="manha" text="Manhã" />
+                            <core:Item key="tarde" text="Tarde" />
+                            <core:Item key="noite" text="Noite" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Disponibilidade"></Label>
+				 <VBox>
+                        <CheckBox text="Segunda-feira" />
+                        <CheckBox text="Terça-feira" />
+                        <CheckBox text="Quarta-feira" />
+                        <CheckBox text="Quinta-feira" />
+                </VBox>
+                <VBox>
+                        <CheckBox text="Sexta-feira" />
+                        <CheckBox text="Sábado" />
+                        <CheckBox text="Domingo" />
+                        <CheckBox text="Feriados" />
+
+                </VBox>
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Contato" editable="true">
+				<Label text="Telefone" tooltip="Any character"/>
+				<MaskInput mask="(99)99999-9999" placeholderSymbol="_" placeholder="Digite o número de telefone"/>
+
+				 <Label text="E-mail"></Label>
+                    <Input
+                            id="emailInput"
+                            class="sapUiSmallMarginBottom"
+                            type="Email"
+                            placeholder="Enter email"
+                            valueStateText="E-mail must be a valid email address."
+                            value="{
+                                path: '/email',
+                                type: '.customEMailType'
+                            }" />
+        </form:SimpleForm>
+    </content>
+
+    <footer>
+        <OverflowToolbar >
+            <ToolbarSpacer/>
+            <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
+            <Button text="Cancelar" type="Reject" press="onCancelar"/>
+            <ToolbarSpacer/>
+        </OverflowToolbar>
+    </footer>
+</Page>
 		
 </mvc:View>
