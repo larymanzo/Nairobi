@@ -61,19 +61,6 @@ class="viewPadding">
 						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
 					</rules>
 				</MaskInput>
-				
-                 <Label text="Latitude"></Label>
-                    <MaskInput mask="99.9999" placeholderSymbol="_" placeholder="Coloque a latitude">
-					<rules>
-						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
-					</rules>
-				</MaskInput>
-                <Label text="Longitude"></Label>
-                    <MaskInput mask="99.9999" placeholderSymbol="_" placeholder="Coloque a longitude">
-					<rules>
-						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
-					</rules>
-				</MaskInput>
         </form:SimpleForm>
 
         <form:SimpleForm title="Disponibilidade" editable="true">
@@ -87,19 +74,18 @@ class="viewPadding">
                     </ComboBox>
 
 				<Label text="Disponibilidade"></Label>
-				 <VBox>
-                        <CheckBox text="Segunda-feira" />
-                        <CheckBox text="Terça-feira" />
-                        <CheckBox text="Quarta-feira" />
-                        <CheckBox text="Quinta-feira" />
-                </VBox>
-                <VBox>
-                        <CheckBox text="Sexta-feira" />
-                        <CheckBox text="Sábado" />
-                        <CheckBox text="Domingo" />
-                        <CheckBox text="Feriados" />
-
-                </VBox>
+                <ComboBox selectedKey="{Voluntario>/disponivel}" placeholder="Selecione o dia disponível">
+                        <items>
+                            <core:Item key="Segunda-feira" text="Segunda-feira" />
+                            <core:Item key="Terça-feira" text="Terca-feira" />
+                            <core:Item key="Quarta-feira" text="Quarta-feira" />
+                            <core:Item key="Quinta-feira" text="Quinta-feira" />
+                            <core:Item key="Sexta-feira" text="Sexta-feira" />
+                            <core:Item key="Sábado" text="Sábado" />
+                            <core:Item key="Domingo" text="Domingo" />
+                        </items>
+                    </ComboBox>
+				
         </form:SimpleForm>
 
         <form:SimpleForm title="Contato" editable="true">

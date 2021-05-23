@@ -7,52 +7,71 @@ xmlns="sap.m">
 
     <Page showHeader="true" title="Cadastro de Doacoes" titleAlignment="Center">
         <content>
-            <form:Form >
-                <form:title>
-                    <core:Title text="Preencha os campos necessários" level="H6" ></core:Title>
-                </form:title>
-                <form:layout>
-                    <form:ColumnLayout columnsL="3" columnsM="2" columnsXL="4"></form:ColumnLayout>
-                </form:layout>
-                <form:formContainers> 
-                    <form:FormContainer >
-                        <form:formElements>
-                            <form:FormElement >
-                                <form:label>
-                                    <Label text="Nome" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <Input value="{Doacoe>/nome}"></Input>
-                                </form:fields>
-                            </form:FormElement>
+            <form:SimpleForm title="Informações das Doações" editable="true">
+                 <Label text="Identificação do Voluntário"></Label>
+                    <ComboBox items="{Doacoe}" selectedKey="{Doacoe>/voluntario}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="{text}" text="{text}" />
+                        </items>
+                    </ComboBox>
 
-                            <form:FormElement >
-                                <form:label>
-                                    <Label text="Voluntário" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <ComboBox items="{Doacoe}" selectedKey="{Doacoe>/voluntario}">
-                                        <items>
-                                            <core:Item key="{text}" text="{text}" />
-                                        </items>
-                                    </ComboBox>
-                                </form:fields>
-                            </form:FormElement>
+                <Label text="Tipo"></Label>
+                    <ComboBox selectedKey="{Doacoe>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="{text}" text="{text}" />
+                        </items>
+                    </ComboBox>
 
-                             <form:FormElement >
-                                <form:label>
-                                    <Label text="Status" design="Bold"></Label>
-                                </form:label>
-                                <form:fields>
-                                    <Switch type="AcceptReject" change="onChangeSwitch" state="{= ${Doacoe>/status} === 'A' ? true : false}"></Switch>
-                                </form:fields>
-                            </form:FormElement>
-                        
-                        </form:formElements>
-                    </form:FormContainer>
-                
-                </form:formContainers> 
-            </form:Form>
+				<Label text="Quantidade"></Label>
+                    <ComboBox selectedKey="{Doacoe>/quantidade}" placeholder="Selecione a quantidade">
+                        <items>
+                            <core:Item key="um" text="um" />
+                            <core:Item key="dois" text="dois" />
+                            <core:Item key="três" text="três" />
+                            <core:Item key="quatro" text="quatro" />
+                            <core:Item key="cinco" text="cinco" />
+                            <core:Item key="seis" text="seis" />
+                            <core:Item key="sete" text="sete" />
+                            <core:Item key="oito" text="oito" />
+                            <core:Item key="nove" text="nove" />
+                            <core:Item key="dez" text="dez" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Perecível"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="sim" text="Sim" />
+                            <core:Item key="não" text="Não" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Data da doação"></Label>
+                    <DatePicker >
+                    </DatePicker>
+
+                <Label text="Doação fixa"></Label>
+                    <ComboBox selectedKey="{Doacoe>/fixa}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="sim" text="Sim" />
+                            <core:Item key="não" text="Não" />
+                        </items>
+                    </ComboBox>
+
+                <Label text="Tipo de doação"></Label>
+                    <ComboBox selectedKey="{Doacoe>/fixa}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="dinheiro" text="Dinheiro" />
+                            <core:Item key="alimentos" text="Alimentos" />
+                            <core:Item key="marmita" text="Marmita" />
+                            <core:Item key="agua" text="Água" />
+                            <core:Item key="pao" text="Pão" />
+                            <core:Item key="kitTalheres" text="Kit talheres" />
+                            <core:Item key="racao" text="Ração" />
+                            </items>
+                    </ComboBox>
+
+            </form:SimpleForm>
         </content>
         <footer>
             <OverflowToolbar >
