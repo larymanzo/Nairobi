@@ -1,0 +1,119 @@
+<mvc:View xmlns:core="sap.ui.core" 
+controllerName="treinamento.l4e.app.controller.CadastroVoluntarios" 
+xmlns:form="sap.ui.layout.form"
+xmlns:l="sap.ui.layout"
+xmlns:u="sap.ui.unified" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m"
+class="viewPadding">
+
+<Page showHeader="true" title="Cadastro de Voluntarios" titleAlignment="Center">
+    <content>
+
+        <form:SimpleForm title="Informações Pessoais" editable="true">
+				<Label text="Nome" tooltip="Any character"/>
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: João Abreu de Andrade">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+				<Label text="Data de aniversário"></Label>
+				 <DatePicker >
+                </DatePicker>
+
+				 <Label text="Identificação"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione a identificação">
+                        <items>
+                            <core:Item key="PJ" text="Pessoa Jurídica" />
+                            <core:Item key="PF" text="Pessoa Física" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Tipo"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="doador" text="Doador" />
+                            <core:Item key="naoDoador" text="Não doador" />
+                        </items>
+                    </ComboBox>
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Endereço" editable="true">
+				<Label text="Rua" tooltip="Any character"/>
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: Enfermeiro geraldo pimentel">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+                <Label text="Número" tooltip="Any character"/>
+				<MaskInput mask="99999" placeholderSymbol="_" placeholder="Coloque o número da casa">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+                <Label text="CEP" tooltip="Any character"/>
+				<MaskInput mask="99999-999" placeholderSymbol="_" placeholder="Coloque o CEP">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Disponibilidade" editable="true">
+				<Label text="Período disponível"></Label>
+                    <ComboBox selectedKey="{Voluntario>/periodo}" placeholder="Selecione o período">
+                        <items>
+                            <core:Item key="manha" text="Manhã" />
+                            <core:Item key="tarde" text="Tarde" />
+                            <core:Item key="noite" text="Noite" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Disponibilidade"></Label>
+                <ComboBox selectedKey="{Voluntario>/disponivel}" placeholder="Selecione o dia disponível">
+                        <items>
+                            <core:Item key="Segunda-feira" text="Segunda-feira" />
+                            <core:Item key="Terça-feira" text="Terca-feira" />
+                            <core:Item key="Quarta-feira" text="Quarta-feira" />
+                            <core:Item key="Quinta-feira" text="Quinta-feira" />
+                            <core:Item key="Sexta-feira" text="Sexta-feira" />
+                            <core:Item key="Sábado" text="Sábado" />
+                            <core:Item key="Domingo" text="Domingo" />
+                        </items>
+                    </ComboBox>
+				
+        </form:SimpleForm>
+
+        <form:SimpleForm title="Contato" editable="true">
+				<Label text="Telefone" tooltip="Any character"/>
+				<MaskInput mask="(99)99999-9999" placeholderSymbol="_" placeholder="Digite o número de telefone"/>
+
+				 <Label text="E-mail"></Label>
+                    <Input
+                            id="emailInput"
+                            class="sapUiSmallMarginBottom"
+                            type="Email"
+                            placeholder="Enter email"
+                            valueStateText="E-mail must be a valid email address."
+                            value="{
+                                path: '/email',
+                                type: '.customEMailType'
+                            }" />
+        </form:SimpleForm>
+    </content>
+
+    <footer>
+        <OverflowToolbar >
+            <ToolbarSpacer/>
+            <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
+            <Button text="Cancelar" type="Reject" press="onCancelar"/>
+            <ToolbarSpacer/>
+        </OverflowToolbar>
+    </footer>
+</Page>
+		
+</mvc:View>

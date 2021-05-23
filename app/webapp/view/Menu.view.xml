@@ -7,12 +7,12 @@
     <tnt:ToolPage>
 		<tnt:header>
 			<tnt:ToolHeader class="Header">
-                <ToolbarSpacer width="30%"/> <!-- espaçamento -->
+                <ToolbarSpacer width="40%"/> <!-- espaçamento -->
                 <Button id="buttonInicio" text="Inicio" press="onPressInicio"/>
                 <Button id="buttonLocalidades" text="Localidades" press="onPressLocalidades"/>
                 <Button id="buttonVoluntarios" text="Voluntários" press="onPressVoluntarios"/>
                 <Button id="buttonDoacoes" text="Doações" press="onPressDoacoes"/>
-                <ToolbarSpacer width="30%"/> <!-- espaçamento -->
+                <ToolbarSpacer width="0%"/> <!-- espaçamento -->
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:mainContents>

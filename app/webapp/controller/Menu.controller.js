@@ -62,16 +62,14 @@ sap.ui.define([
 
             onPressConsultaVoluntario: function(){
                 this.getRouter().navTo("ConsultaVoluntarios")
+            },
+
+            onPressCadastroDoacoes: function(){
+                this.getRouter().navTo("CadastroDoacoes");
+            },
+
+            onPressConsultaDoacoes: function(){
+                this.getRouter().navTo("ConsultaDoacoes")
             }
-            
-            // // Função do botão de "Consulta de Plataformas"
-            // onNavConsultaPlataformas: function(){
-            //     this.getRouter().navTo("ConsultaPlataformas");
-            // },
-            
-            // // Função do botão de "Cadastro de Plataformas"
-            // onNavCadastroPlataformas: function(){
-            //     this.getRouter().navTo("CadastroPlataformas");
-            // }
 		});
 	});

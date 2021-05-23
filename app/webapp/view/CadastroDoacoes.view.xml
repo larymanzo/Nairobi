@@ -1,0 +1,86 @@
+<mvc:View xmlns:core="sap.ui.core" 
+controllerName="treinamento.l4e.app.controller.CadastroDoacoes" 
+xmlns:form="sap.ui.layout.form" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+
+    <Page showHeader="true" title="Cadastro de Doacoes" titleAlignment="Center">
+        <content>
+            <form:SimpleForm title="Informações das Doações" editable="true">
+                 <Label text="Identificação do Voluntário"></Label>
+                    <ComboBox items="{Doacoe}" selectedKey="{Doacoe>/voluntario}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="{text}" text="{text}" />
+                        </items>
+                    </ComboBox>
+
+                <Label text="Tipo"></Label>
+                    <ComboBox selectedKey="{Doacoe>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="{text}" text="{text}" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Quantidade"></Label>
+                    <ComboBox selectedKey="{Doacoe>/quantidade}" placeholder="Selecione a quantidade">
+                        <items>
+                            <core:Item key="um" text="um" />
+                            <core:Item key="dois" text="dois" />
+                            <core:Item key="três" text="três" />
+                            <core:Item key="quatro" text="quatro" />
+                            <core:Item key="cinco" text="cinco" />
+                            <core:Item key="seis" text="seis" />
+                            <core:Item key="sete" text="sete" />
+                            <core:Item key="oito" text="oito" />
+                            <core:Item key="nove" text="nove" />
+                            <core:Item key="dez" text="dez" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Perecível"></Label>
+                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
+                        <items>
+                            <core:Item key="sim" text="Sim" />
+                            <core:Item key="não" text="Não" />
+                        </items>
+                    </ComboBox>
+
+				<Label text="Data da doação"></Label>
+                    <DatePicker >
+                    </DatePicker>
+
+                <Label text="Doação fixa"></Label>
+                    <ComboBox selectedKey="{Doacoe>/fixa}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="sim" text="Sim" />
+                            <core:Item key="não" text="Não" />
+                        </items>
+                    </ComboBox>
+
+                <Label text="Tipo de doação"></Label>
+                    <ComboBox selectedKey="{Doacoe>/fixa}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="dinheiro" text="Dinheiro" />
+                            <core:Item key="alimentos" text="Alimentos" />
+                            <core:Item key="marmita" text="Marmita" />
+                            <core:Item key="agua" text="Água" />
+                            <core:Item key="pao" text="Pão" />
+                            <core:Item key="kitTalheres" text="Kit talheres" />
+                            <core:Item key="racao" text="Ração" />
+                            </items>
+                    </ComboBox>
+
+            </form:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
+                <Button text="Cancelar" type="Reject" press="onCancelar"/>
+                <ToolbarSpacer/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+		
+</mvc:View>
