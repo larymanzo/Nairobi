@@ -55,6 +55,20 @@ sap.ui.define([
                     return this._oMenuFragment;
                 }.bind(this));
             },
+            
+            // botão Calendario ao abrir
+            onPressCalendario: function () {
+                var oButton = oView.byId("buttonCalendario");
+                this._oMenuFragment = Fragment.load({
+                    id: oView.getId(),
+                    name: "treinamento.l4e.app.view.fragments.Calendario",
+                    controller: this
+                }).then(function(oMenu) {
+                    oMenu.openBy(oButton);
+                    this._oMenuFragment = oMenu;
+                    return this._oMenuFragment;
+                }.bind(this));
+            },
 
             onPressCadastroVoluntario: function(){
                 this.getRouter().navTo("CadastroVoluntarios");
@@ -70,6 +84,22 @@ sap.ui.define([
 
             onPressConsultaDoacoes: function(){
                 this.getRouter().navTo("ConsultaDoacoes")
+            },
+
+            onPressCadastroLocalidade: function(){
+                this.getRouter().navTo("CadastroLocalidade");
+            },
+
+            onPressConsultaLocalidade: function(){
+                this.getRouter().navTo("ConsultaLocalidade")
+            },
+
+            onPressCadastroCalendario: function(){
+                this.getRouter().navTo("CadastroCalendario");
+            },
+
+            onPressConsultaCalendario: function(){
+                this.getRouter().navTo("ConsultaCalendario")
             }
 		});
 	});

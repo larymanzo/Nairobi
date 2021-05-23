@@ -12,6 +12,7 @@
                 <Button id="buttonLocalidades" text="Localidades" press="onPressLocalidades"/>
                 <Button id="buttonVoluntarios" text="Voluntários" press="onPressVoluntarios"/>
                 <Button id="buttonDoacoes" text="Doações" press="onPressDoacoes"/>
+                <Button id="buttonCalendario" text="Calendário" press="onPressCalendario"/>
                 <ToolbarSpacer width="0%"/> <!-- espaçamento -->
 			</tnt:ToolHeader>
 		</tnt:header>
