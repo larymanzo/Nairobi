@@ -2,7 +2,7 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core">
 	<Menu itemSelected="onMenuAction">
-		<MenuItem text="Cadastro" press="onPressCadastroLocalidade"/>
-		<MenuItem text="Consulta" press="onPressConsultaLocalidade"/>
+		<MenuItem text="Cadastro" press="onPressCadastroCalendario"/>
+		<MenuItem text="Consulta" press="onPressConsultaCalendario"/>
 	</Menu>
 </core:FragmentDefinition>

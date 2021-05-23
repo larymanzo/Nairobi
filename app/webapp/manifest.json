@@ -117,6 +117,36 @@
                     "name": "EditarDoacoes",
                     "pattern": "EditarDoacoes/{id}",
                     "target": ["Menu", "CadastroDoacoes"]
+                },
+                {
+                    "name": "CadastroLocalidade",
+                    "pattern": "CadastroLocalidade",
+                    "target": ["Menu", "CadastroLocalidade"]
+                },
+                {
+                    "name": "ConsultaLocalidade",
+                    "pattern": "ConsultaLocalidade",
+                    "target": ["Menu", "ConsultaLocalidade"]
+                },
+                {
+                    "name": "EditarLocalidade",
+                    "pattern": "EditarLocalidade/{id}",
+                    "target": ["Menu", "CadastroLocalidade"]
+                },
+                {
+                    "name": "CadastroCalendario",
+                    "pattern": "CadastroCalendario",
+                    "target": ["Menu", "CadastroCalendario"]
+                },
+                {
+                    "name": "ConsultaCalendario",
+                    "pattern": "ConsultaCalendario",
+                    "target": ["Menu", "ConsultaCalendario"]
+                },
+                {
+                    "name": "EditarCalendario",
+                    "pattern": "EditarCalendario/{id}",
+                    "target": ["Menu", "CadastroCalendario"]
                 }
 
             ],
@@ -171,6 +201,46 @@
 					"clearControlAggregation": false,
 					"viewId": "consultaDoacoes",
                     "viewName": "ConsultaDoacoes",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "CadastroLocalidade": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "cadastroLocalidade",
+                    "viewName": "CadastroLocalidade",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "ConsultaLocalidade": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "consultaLocalidade",
+                    "viewName": "ConsultaLocalidade",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "CadastroCalendario": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "cadastroCalendario",
+                    "viewName": "CadastroCalendario",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "ConsultaCalendario": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "consultaCalendario",
+                    "viewName": "ConsultaCalendario",
                     "controlAggregation": "pages",
                     "parent": "Menu",
                     "controlId": "ConteudoMenu"

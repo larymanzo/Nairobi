@@ -1,0 +1,43 @@
+<mvc:View 
+controllerName="treinamento.l4e.app.controller.ConsultaCalendario" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+	<Page showHeader="true" title="Consulta de Doacoes" titleAlignment="Center">
+        <content>
+            <Table mode="Delete" id="tableDoacoes" delete="onExcluir" items="{path: 'Doacoes>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Calendário" level="H2" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite um tipo que deseja procurar" width="50%" liveChange="onSearch" ></SearchField>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Cadastro de necessitados" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Entrega de marmita" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Recolhimento de doações" design="Bold"></Label>
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem type="Detail" detailPress="onNavEditarDoacoe">
+                        <cells>
+                            <Text text="{Calendario>cadastro}"></Text>
+                            <Text text="{Doacoes>nome}"></Text>
+                            <Text text="{Doacoes>tipo}"></Text>
+                            <ObjectStatus text="{= ${Calendario>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Calendario>status} === 'A' ? 'Success' : 'Error'}"></ObjectStatus>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
