@@ -70,6 +70,10 @@ sap.ui.define([
                 }.bind(this));
             },
 
+            onPressInicio: function(){
+                this.getRouter().navTo("Inicio");
+            },
+
             onPressCadastroVoluntario: function(){
                 this.getRouter().navTo("CadastroVoluntarios");
             },

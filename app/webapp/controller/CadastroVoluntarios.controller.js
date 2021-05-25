@@ -32,7 +32,7 @@ sap.ui.define([
                 // Precisamos passar o ID na url para a API retornar apenas os dados do item selecionado.
                 await 
                 $.ajax({
-                    "url": `/api/voluntarios/${id}`, // concatena a URL com o ID
+                    "url": `/api/VoluntariosSet/${id}`, // concatena a URL com o ID
                     "method": "GET",
                     success(data) {
                         that.getView().setModel(new JSONModel(data), "Voluntario"); // salva o retorno da API (data) em um Model chamado 'Voluntario'
@@ -63,7 +63,7 @@ sap.ui.define([
                 // Senão, irá criar (POST) um novo registro na tabela
                 if(this.getRouter().getHashChanger().getHash().search("EditarVoluntarios") === 0){
 
-                    await $.ajax(`/api/voluntarios/${oVoluntario.id}`, { // Concatena o ID do Voluntario selecionado na url
+                    await $.ajax(`/api/VoluntariosSet/${oVoluntario.id}`, { // Concatena o ID do Voluntario selecionado na url
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -71,8 +71,13 @@ sap.ui.define([
                     // Cria a estrutura dos dados para enviar para API
                     data: JSON.stringify({
                         "nome": oVoluntario.nome,
-                        "tipo": oVoluntario.tipo,
-                        "status": oVoluntario.status
+                        "identificacao": oVoluntario.identificacao,
+                        "dataNasc": oVoluntario.dataNascimento,
+                        "endereco": oVoluntario.endereco,
+                        "telefone": oVoluntario.telefone,
+                        "email": oVoluntario.email,
+                        "diaDisponivel": oVoluntario.diaDisponivel,
+                        "horaDisponivel": oVoluntario.horaDisponivel,
                     }),
                     success() {
                         // Se a api retornar sucesso, exibe uma mensagem para o usuário e navega para a tela de "ConsultaVoluntarios"
@@ -92,7 +97,7 @@ sap.ui.define([
 
                     this.getView().setBusy(true);
                     // Método POST para salvar os dados 
-                    await $.ajax("/api/voluntarios", {
+                    await $.ajax("/api/VoluntariosSet", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
