@@ -1,0 +1,43 @@
+<mvc:View xmlns:core="sap.ui.core" 
+controllerName="treinamento.l4e.app.controller.CadastroLocalidade" 
+xmlns:form="sap.ui.layout.form" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+
+    <Page showHeader="true" title="Cadastro de Localidade" titleAlignment="Center">
+        <content>
+            <form:SimpleForm title="Localidade" editable="true">
+                 <Label text="Local"></Label>
+                    <ComboBox items="{Localidade}" selectedKey="{Localidade>/voluntario}" placeholder="Selecione">
+                        <items>
+                            <core:Item key="{text}" text="{text}" />
+                        </items>
+                    </ComboBox>
+
+                <Label text="Número de pessoas" tooltip="Any character"/>
+				<MaskInput mask="9999" placeholderSymbol="_" placeholder="Coloque o número de pessoas">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+
+				<Label text="Número de animais" tooltip="Any character"/>
+				<MaskInput mask="9999" placeholderSymbol="_" placeholder="Coloque o número de animais">
+					<rules>
+						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+					</rules>
+				</MaskInput>
+            </form:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button text="Confirmar" type="Emphasized" press="onConfirmar"/>
+                <Button text="Cancelar" type="Reject" press="onCancelar"/>
+                <ToolbarSpacer/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+		
+</mvc:View>
