@@ -23,7 +23,7 @@ xmlns="sap.m">
                         <Label wrapping="true" text="Nome" design="Bold"></Label>
                     </Column>
                     <Column demandPopin="true" minScreenWidth="Desktop">
-                        <Label wrapping="true" text="Tipo" design="Bold"></Label>
+                        <Label wrapping="true" text="Função" design="Bold"></Label>
                     </Column>
                     <Column demandPopin="true" minScreenWidth="Desktop">
                         <Label wrapping="true" text="Contato" design="Bold"></Label>

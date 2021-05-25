@@ -39,7 +39,7 @@ xmlns="sap.m">
                     </ComboBox>
 
 				<Label text="Perecível"></Label>
-                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
+                    <ComboBox selectedKey="{Voluntario>/perecivel}" placeholder="Selecione se é perecível ou não">
                         <items>
                             <core:Item key="sim" text="Sim" />
                             <core:Item key="não" text="Não" />
