@@ -86,7 +86,12 @@
                 {
                     "name": "Menu",
                     "pattern": "",
-                    "target": ["Menu", "CadastroVoluntarios"]
+                    "target": ["Menu", "Inicio"]
+                },
+                {
+                    "name": "Inicio",
+                    "pattern": "",
+                    "target": ["Menu", "Inicio"]
                 },
                 {
                     "name": "CadastroVoluntarios",
@@ -164,6 +169,16 @@
 					"clearControlAggregation": false,
 					"viewId": "App",
 					"viewName": "App"
+                },
+                "Inicio": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "inicio",
+                    "viewName": "Inicio",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
                 },
                 "CadastroVoluntarios": {
 					"viewType": "XML",
