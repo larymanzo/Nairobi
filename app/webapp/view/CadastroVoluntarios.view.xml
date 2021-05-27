@@ -13,7 +13,7 @@ class="viewPadding">
 
         <form:SimpleForm title="Informações Pessoais" editable="true">
 				<Label text="Nome" tooltip="Any character"/>
-				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: João Abreu de Andrade">
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: João Abreu de Andrade" selectedKey="{Voluntario>/nome}">
 					<rules>
 						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
 					</rules>
@@ -31,25 +31,11 @@ class="viewPadding">
                         </items>
                     </ComboBox>
 
-				<Label text="Tipo"></Label>
-                    <ComboBox selectedKey="{Voluntario>/tipo}" placeholder="Selecione o tipo">
-                        <items>
-                            <core:Item key="doador" text="Doador" />
-                            <core:Item key="naoDoador" text="Não doador" />
-                        </items>
-                    </ComboBox>
         </form:SimpleForm>
 
         <form:SimpleForm title="Endereço" editable="true">
 				<Label text="Rua" tooltip="Any character"/>
-				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: Enfermeiro geraldo pimentel">
-					<rules>
-						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
-					</rules>
-				</MaskInput>
-
-                <Label text="Número" tooltip="Any character"/>
-				<MaskInput mask="99999" placeholderSymbol="_" placeholder="Coloque o número da casa">
+				<MaskInput mask="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  placeholder="Ex: Enfermeiro geraldo pimentel" selectedKey="{Voluntario>/endereco}">
 					<rules>
 						<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
 					</rules>
@@ -65,7 +51,7 @@ class="viewPadding">
 
         <form:SimpleForm title="Disponibilidade" editable="true">
 				<Label text="Período disponível"></Label>
-                    <ComboBox selectedKey="{Voluntario>/periodo}" placeholder="Selecione o período">
+                    <ComboBox selectedKey="{Voluntario>/horaDisponivel}" placeholder="Selecione o período">
                         <items>
                             <core:Item key="manha" text="Manhã" />
                             <core:Item key="tarde" text="Tarde" />
@@ -74,7 +60,7 @@ class="viewPadding">
                     </ComboBox>
 
 				<Label text="Disponibilidade"></Label>
-                <ComboBox selectedKey="{Voluntario>/disponivel}" placeholder="Selecione o dia disponível">
+                <ComboBox selectedKey="{Voluntario>/diaDisponivel}" placeholder="Selecione o dia disponível">
                         <items>
                             <core:Item key="Segunda-feira" text="Segunda-feira" />
                             <core:Item key="Terça-feira" text="Terca-feira" />

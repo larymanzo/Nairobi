@@ -27,29 +27,22 @@ sap.ui.define([
             handleRouteMatchedEditarVoluntario: async function(){
                 var that = this;
                 var id = this.getRouter().getHashChanger().getHash().split("/")[1];
+                console.log(id);
                 this.getView().setBusy(true);
                 // Faz a chamada na API para pegar o voluntario selecionado na tabela.
                 // Precisamos passar o ID na url para a API retornar apenas os dados do item selecionado.
                 await 
                 $.ajax({
-                    "url": `/api/VoluntariosSet/${id}`, // concatena a URL com o ID
+                    "url": `/apiNairobi/api/VoluntariosSet?$filter=ID eq ${id}`, // concatena a URL com o ID
                     "method": "GET",
                     success(data) {
-                        that.getView().setModel(new JSONModel(data), "Voluntario"); // salva o retorno da API (data) em um Model chamado 'Voluntario'
+                        that.getView().setModel(new JSONModel(data.value), "Voluntario"); // salva o retorno da API (data) em um Model chamado 'Voluntario'
                     },
                     error() {
                         MessageBox.error("Não foi possível buscar os Voluntarios.") //Se der erro de API, exibe uma mensagem ao usuário
                     }
                 });
                 this.getView().setBusy(false);
-            },
-
-            // Função do elemento 'Switch' da tela
-            onChangeSwitch: function(oEvent){
-                // Salva o status no Model 'Voluntario' de acordo com a propriedade state.
-                // Se o state for true -> salva como 'A' (que significa ativo)
-                // Se o state for false -> salva como 'I' (que significa inativo)
-                this.getView().getModel("Voluntario").setProperty("/status", oEvent.getSource().getState() === true ? "A" : "I" );
             },
 
             // Função do botão "Confirmar"
@@ -63,7 +56,7 @@ sap.ui.define([
                 // Senão, irá criar (POST) um novo registro na tabela
                 if(this.getRouter().getHashChanger().getHash().search("EditarVoluntarios") === 0){
 
-                    await $.ajax(`/api/VoluntariosSet/${oVoluntario.id}`, { // Concatena o ID do Voluntario selecionado na url
+                    await $.ajax(`/apiNairobi/api/VoluntariosSet/${oVoluntario.id}`, { // Concatena o ID do Voluntario selecionado na url
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -71,13 +64,15 @@ sap.ui.define([
                     // Cria a estrutura dos dados para enviar para API
                     data: JSON.stringify({
                         "nome": oVoluntario.nome,
-                        "identificacao": oVoluntario.identificacao,
                         "dataNasc": oVoluntario.dataNascimento,
+                        "identificacao": oVoluntario.identificacao,
                         "endereco": oVoluntario.endereco,
+                        "CEP": oVoluntario.endereco,
                         "telefone": oVoluntario.telefone,
                         "email": oVoluntario.email,
-                        "diaDisponivel": oVoluntario.diaDisponivel,
                         "horaDisponivel": oVoluntario.horaDisponivel,
+                        "diaDisponivel": oVoluntario.diaDisponivel,
+                        "funcao": oVoluntario.funcao,
                     }),
                     success() {
                         // Se a api retornar sucesso, exibe uma mensagem para o usuário e navega para a tela de "ConsultaVoluntarios"
@@ -97,7 +92,7 @@ sap.ui.define([
 
                     this.getView().setBusy(true);
                     // Método POST para salvar os dados 
-                    await $.ajax("/api/VoluntariosSet", {
+                    await $.ajax("/apiNairobi/api/VoluntariosSet", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

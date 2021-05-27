@@ -38,11 +38,12 @@ xmlns="sap.m">
                 <items>
                     <ColumnListItem type="Detail" detailPress="onNavEditarVoluntario">
                         <cells>
-                            <Text text="{Voluntarios>id}"></Text>
+                            <Text text="{Voluntarios>ID}"></Text>
                             <Text text="{Voluntarios>nome}"></Text>
-                            <Text text="{Voluntarios>tipo}"></Text>
-                            <Text text="{Voluntarios>criado}"></Text>
-                            <Text text="{Voluntarios>atualizado}"></Text>
+                            <Text text="{Voluntarios>funcao}"></Text>
+                            <Text text="{Voluntarios>telefone}"></Text>
+                            <Text text="{Voluntarios>horaDisponivel}"></Text>
+                            <Text text="{Voluntarios>diaDisponivel}"></Text>
                             <ObjectStatus text="{= ${Voluntarios>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Voluntarios>status} === 'A' ? 'Success' : 'Error'}"></ObjectStatus>
                         </cells>
                     </ColumnListItem>

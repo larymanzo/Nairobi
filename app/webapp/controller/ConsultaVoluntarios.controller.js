@@ -19,30 +19,54 @@ sap.ui.define([
             
             handleRouteMatched: async function(){
                 var that = this;
-                // Busca todos os Voluntarios cadastrados (GET)
+                // Busca todas as funções
+                var funcoes
                 await
                 $.ajax({
-                    "url": "/api/voluntarios",
+                    "url": "/apiNairobi/api/FuncoesSet",
                     "method": "GET",
                     success(data){
-                        that.getView().setModel(new JSONModel(data), "Voluntarios")
+                        funcoes = data.value
                     },
                     error(){
                         MessageBox.error("Não foi possível buscar os Voluntarios.")
                     }
-
                 })
+
+                // Busca todos os Voluntarios cadastrados (GET)
+                var voluntarios
+                await
+                $.ajax({
+                    "url": "/apiNairobi/api/VoluntariosSet",
+                    "method": "GET",
+                    success(data){
+                        voluntarios = data.value
+                        for (let index in voluntarios) {
+                            for (let index2 in funcoes) {
+                                if (voluntarios[index].tipo_ID == funcoes[index2].ID) {
+                                    voluntarios[index].funcao = funcoes[index2].descricao
+                                }
+                            }
+                        }
+                        that.getView().setModel(new JSONModel(voluntarios), "Voluntarios")
+                    },
+                    error(){
+                        MessageBox.error("Não foi possível buscar os Voluntarios.")
+                    }
+                })
+
             },
             
             // Função do botão 'Excluir'
             onExcluir: async function(oEvent){
-                var id = oEvent.getParameter('listItem').getBindingContext("Voluntarios").getObject().id; // pega o ID do Voluntario selecionado
+                var id = oEvent.getParameter('listItem').getBindingContext("Voluntarios").getObject().ID; // pega o ID do Voluntario selecionado
+                console.log(id)
                 this.getView().setBusy(true);
 
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/api/voluntarios/${id}`,
+                    "url": `/apiNairobi/api/VoluntariosSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")
@@ -59,7 +83,7 @@ sap.ui.define([
 
             // Função do botão editar da tabela
             onNavEditarVoluntario: function(oEvent){
-                var voluntarioId = oEvent.getSource().getBindingContext("Voluntarios").getObject().id; // pega o id do voluntario selecionado
+                var voluntarioId = oEvent.getSource().getBindingContext("Voluntarios").getObject().ID; // pega o id do voluntario selecionado
                 this.getRouter().navTo("EditarVoluntarios", {id: voluntarioId}); // chama a rota de edição passando o id do Voluntario selecionado
             },
 

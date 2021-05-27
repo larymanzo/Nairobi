@@ -38,9 +38,9 @@ xmlns="sap.m">
                 <items>
                     <ColumnListItem type="Detail" detailPress="onNavEditarDoacoe">
                         <cells>
-                            <Text text="{Doacoes>id}"></Text>
+                            <Text text="{Doacoes>ID}"></Text>
                             <Text text="{Doacoes>nome}"></Text>
-                            <Text text="{Doacoes>tipo}"></Text>
+                            <Text text="{Doacoes>descricao}"></Text>
                             <Text text="{Doacoes>criado}"></Text>
                             <Text text="{Doacoes>atualizado}"></Text>
                             <ObjectStatus text="{= ${Doacoes>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Doacoes>status} === 'A' ? 'Success' : 'Error'}"></ObjectStatus>

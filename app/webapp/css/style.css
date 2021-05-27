@@ -1,0 +1,41 @@
+.sapTntToolHeader.sapMTB {
+    background-color: #b34141 !important;
+    box-shadow: inset 0 -0.0625rem 0 0 #fff;
+}
+
+.sapTntToolHeader .sapMBtn .sapMBtnTransparent, .sapTntToolHeader .sapMBtn .sapMBtnDefault, .sapTntToolHeader .sapMBtn .sapMBtnBack, .sapTntToolHeader .sapMBtn .sapMBtnUp {
+    color: #b34141 !important;
+    background-color: #fff !important;
+    border-color: #b34141 !important;
+    align-items: center;
+}
+span.sapMBtnInner.sapMBtnEmphasized {
+    background-image: none;
+    background-color: #b34141;
+    border-color: #32363a;
+    color: #fff;
+    text-shadow: 0 0 0.125rem transparent;
+}
+
+.sapUiMnu.sapUiMnuCozySupport.sapUiSizeCozy .sapUiMnuNoSbMnu>.sapUiMnuItm>.sapUiMnuItmTxt, .sapUiMnu.sapUiMnuCozySupport.sapUiSizeCozy .sapUiMnuItm.sapUiMnuTfItm>.sapUiMnuItmTxt {
+    padding-right: 1rem;
+    color: #b34141;
+}
+
+.sapMOTAPopover .sapMBtnTransparent:not(.sapMBtnActive):not(.sapMToggleBtnPressed), .sapMOTAPopover .sapMBtnDisabled .sapMBtnTransparent {
+    color: #b34141;
+}
+
+.sapMTableTH {
+    background: #b34141;
+}
+
+.sapMPage>.sapMPageHeader+section, .sapMPage>.sapMPageSubHeader+section, .sapMPage>.sapMPageHeader+.sapUiHiddenPlaceholder+section {
+    top: 2.75rem;
+    background-color: #fff;
+}
+
+.sapMPanel .sapMPanelHdr, .sapMPanel .sapMTB.sapMPanelHeaderTB {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
