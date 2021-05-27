@@ -16,27 +16,95 @@ sap.ui.define([
             },
             
             // Rota de cadastro
-            handleRouteMatched: function(){
+            handleRouteMatched: async function(){
                 // Inicia o model com o status "A" (ativo)
                 this.getView().setModel(new JSONModel({
                     "status": "A" 
                 }), "Voluntario");
+
+                // Seta titulo da pagina para Cadastro de Voluntarios
+                this.getView().setModel(new JSONModel({
+                    "title": "Cadastro de Voluntarios"
+                }), "title");
+
+                // Busca todas as funções
+                var that = this;
+                var funcoes
+                await
+                $.ajax({
+                    "url": "/apiNairobi/FuncoesSet",
+                    "method": "GET",
+                    success(data){
+                        funcoes = data.value
+                        that.getView().setModel(new JSONModel(funcoes), "Funcoes")
+                    },
+                    error(){
+                        MessageBox.error("Não foi possível buscar os Voluntarios.")
+                    }
+                })
+                // Faz o novo ID
+                this.geraNovoID()
+            },
+
+            geraNovoID: async function() {
+                var maiorID = 0;
+                await 
+                $.ajax({
+                    "url": `/apiNairobi/VoluntariosSet`, 
+                    "method": "GET",
+                    success(data) {
+                        for (let index in data.value) {
+                            if (maiorID < data.value[index].ID) { maiorID = data.value[index].ID }
+                        }
+                        maiorID++
+                    },
+                    error() {
+                        MessageBox.error("Falha ao gerar novo ID.") 
+                    }
+                });
+                this.getView().setBusy(false);
+                // colocando novo ID na model
+                this.getView().getModel("Voluntario").setProperty("/ID", maiorID)
             },
 
             // Rota de edição
             handleRouteMatchedEditarVoluntario: async function(){
+                // Seta titulo da pagina para Editar Voluntario
+                this.getView().setModel(new JSONModel({
+                    "title": "Editar Voluntario"
+                }), "title");
+
                 var that = this;
+
+                // Busca todas as funções
+                var funcoes
+                await
+                $.ajax({
+                    "url": "/apiNairobi/FuncoesSet",
+                    "method": "GET",
+                    success(data){
+                        funcoes = data.value
+                        that.getView().setModel(new JSONModel(funcoes), "Funcoes")
+                    },
+                    error(){
+                        MessageBox.error("Não foi possível buscar os Voluntarios.")
+                    }
+                })
+                console.log('alo', that.getView().getModel("Funcoes").getData())
+
+                // Pega o id do voluntario
                 var id = this.getRouter().getHashChanger().getHash().split("/")[1];
-                console.log(id);
                 this.getView().setBusy(true);
                 // Faz a chamada na API para pegar o voluntario selecionado na tabela.
                 // Precisamos passar o ID na url para a API retornar apenas os dados do item selecionado.
+                var voluntario;
                 await 
                 $.ajax({
-                    "url": `/apiNairobi/api/VoluntariosSet?$filter=ID eq ${id}`, // concatena a URL com o ID
+                    "url": `/apiNairobi/VoluntariosSet/${id}`, // concatena a URL com o ID
                     "method": "GET",
                     success(data) {
-                        that.getView().setModel(new JSONModel(data.value), "Voluntario"); // salva o retorno da API (data) em um Model chamado 'Voluntario'
+                        voluntario = data
+                        that.getView().setModel(new JSONModel(voluntario), "Voluntario")
                     },
                     error() {
                         MessageBox.error("Não foi possível buscar os Voluntarios.") //Se der erro de API, exibe uma mensagem ao usuário
@@ -45,35 +113,56 @@ sap.ui.define([
                 this.getView().setBusy(false);
             },
 
+            formataCampos: function() {
+                let erros = []
+                // formata model Voluntario
+                let voluntario = this.getView().getModel('Voluntario').getData()
+
+                // formata data para salvar corretamente no banco de dados
+                let dataFormatada = voluntario.dataNascimento.split('/')
+                // Se a data estiver no formato dd/mm/aaaa ele formata para aaaa-mm-dd
+                if (dataFormatada[1]) {
+                    dataFormatada = dataFormatada[2] + '-' + dataFormatada[1] + '-' + dataFormatada[0]
+                }
+                voluntario = {
+                    "nome": voluntario.nome,
+                    "dataNascimento": dataFormatada,
+                    "identificacao": voluntario.identificacao,
+                    "tipo_ID": Number(voluntario.tipo_ID),
+                    "endereco": voluntario.endereco,
+                    "cep": voluntario.cep,
+                    "horaDisponivel": voluntario.horaDisponivel,
+                    "diaDisponivel": voluntario.diaDisponivel,
+                    "telefone": voluntario.telefone,
+                    "email": voluntario.email
+                }
+                this.getView().setModel(new JSONModel(voluntario), 'Voluntario')
+            },
+
             // Função do botão "Confirmar"
             onConfirmar: async function(){
-                var oVoluntario = this.getView().getModel("Voluntario").getData();
+                // pegando id
+                var oVoluntarioID = this.getView().getModel("Voluntario").getData();
+                oVoluntarioID = oVoluntarioID.ID
+
+                // chama função para validar os campos
+                this.formataCampos()
+                let voluntario = this.getView().getModel("Voluntario").getData()
                 var that = this;
-                console.log(oVoluntario)
+                
 
                 // Primeiro é validado se a rota que estamos é a rota de 'EditarVoluntarios'
                 // Se for, o botão será responsável por atualizar (PUT) os dados
                 // Senão, irá criar (POST) um novo registro na tabela
                 if(this.getRouter().getHashChanger().getHash().search("EditarVoluntarios") === 0){
 
-                    await $.ajax(`/apiNairobi/api/VoluntariosSet/${oVoluntario.id}`, { // Concatena o ID do Voluntario selecionado na url
+                    await $.ajax(`/apiNairobi/VoluntariosSet/${oVoluntarioID}`, { // Concatena o ID do Voluntario selecionado na url
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     // Cria a estrutura dos dados para enviar para API
-                    data: JSON.stringify({
-                        "nome": oVoluntario.nome,
-                        "dataNasc": oVoluntario.dataNascimento,
-                        "identificacao": oVoluntario.identificacao,
-                        "endereco": oVoluntario.endereco,
-                        "CEP": oVoluntario.endereco,
-                        "telefone": oVoluntario.telefone,
-                        "email": oVoluntario.email,
-                        "horaDisponivel": oVoluntario.horaDisponivel,
-                        "diaDisponivel": oVoluntario.diaDisponivel,
-                        "funcao": oVoluntario.funcao,
-                    }),
+                    data: JSON.stringify(voluntario),
                     success() {
                         // Se a api retornar sucesso, exibe uma mensagem para o usuário e navega para a tela de "ConsultaVoluntarios"
                         MessageBox.success("Editado com sucesso!", {
@@ -89,24 +178,23 @@ sap.ui.define([
                 });
 
                 }else{
-
-                    this.getView().setBusy(true);
+                    voluntario.ID = oVoluntarioID
                     // Método POST para salvar os dados 
-                    await $.ajax("/apiNairobi/api/VoluntariosSet", {
+                    await $.ajax("/apiNairobi/VoluntariosSet", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        data: JSON.stringify(oVoluntario),
+                        data: JSON.stringify(voluntario),
                         success(){
                             MessageBox.success("Salvo com sucesso!");
+                            that.geraNovoID()
                         },
                         error(){
                             MessageBox.error("Não foi possível salvar o Voluntario.");
                         }
                     })
 
-                    this.getView().setBusy(false);
 
                 }
             },

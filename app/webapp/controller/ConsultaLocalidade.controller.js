@@ -19,13 +19,13 @@ sap.ui.define([
             
             handleRouteMatched: async function(){
                 var that = this;
-                // Busca todos as Doacoes cadastrados (GET)
+                // Busca todos as Localidade cadastrados (GET)
                 await
                 $.ajax({
-                    "url": "/api/localidade",
+                    "url": "/apiNairobi/api/ocalidadesSet",
                     "method": "GET",
                     success(data){
-                        that.getView().setModel(new JSONModel(data), "Localidades")
+                        that.getView().setModel(new JSONModel(data.value), "Localidades")
                     },
                     error(){
                         MessageBox.error("Não foi possível buscar as Localidades.")
@@ -42,7 +42,7 @@ sap.ui.define([
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/api/localidade/${id}`,
+                    "url": `/apiNairobi/api/LocalidadesSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")

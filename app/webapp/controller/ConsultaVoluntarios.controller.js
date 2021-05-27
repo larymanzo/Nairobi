@@ -23,7 +23,7 @@ sap.ui.define([
                 var funcoes
                 await
                 $.ajax({
-                    "url": "/apiNairobi/api/FuncoesSet",
+                    "url": "/apiNairobi/FuncoesSet",
                     "method": "GET",
                     success(data){
                         funcoes = data.value
@@ -37,7 +37,7 @@ sap.ui.define([
                 var voluntarios
                 await
                 $.ajax({
-                    "url": "/apiNairobi/api/VoluntariosSet",
+                    "url": "/apiNairobi/VoluntariosSet",
                     "method": "GET",
                     success(data){
                         voluntarios = data.value
@@ -66,7 +66,7 @@ sap.ui.define([
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/apiNairobi/api/VoluntariosSet/${id}`,
+                    "url": `/apiNairobi/VoluntariosSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")

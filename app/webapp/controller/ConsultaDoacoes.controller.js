@@ -22,10 +22,10 @@ sap.ui.define([
                 // Busca todos as Doacoes cadastrados (GET)
                 await
                 $.ajax({
-                    "url": "/api/doacoes",
+                    "url": "/apiNairobi/api/DoacoesSet",
                     "method": "GET",
                     success(data){
-                        that.getView().setModel(new JSONModel(data), "Doacoes")
+                        that.getView().setModel(new JSONModel(data.value), "Doacoes")
                     },
                     error(){
                         MessageBox.error("Não foi possível buscar as Doacoes.")
@@ -42,7 +42,7 @@ sap.ui.define([
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/api/doacoes/${id}`,
+                    "url": `/apiNairobi/api/DoacoesSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")
