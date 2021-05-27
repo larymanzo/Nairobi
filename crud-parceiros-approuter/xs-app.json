@@ -3,9 +3,9 @@
   "authenticationMethod": "none",
   "routes": [
     {
-      "source": "^/api/(.*)$",
+      "source": "^/apiNairobi/(.*)$",
       "target": "$1",
-      "destination": "api-cadastral",
+      "destination": "API_Projeto",
       "csrfProtection": false
     },
     {
