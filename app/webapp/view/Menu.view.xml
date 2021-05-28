@@ -3,11 +3,14 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:layout= "sap.ui.layout"
-    xmlns:tnt="sap.tnt">
+    xmlns:tnt="sap.tnt"
+    height="100%">
     <tnt:ToolPage>
 		<tnt:header>
 			<tnt:ToolHeader class="Header">
-                <ToolbarSpacer/> <!-- espaçamento -->
+                <Avatar src="images/logo.png" displaySize="XS" press=".onAvatarPressed" />
+                <Title text="App ação social" design="Bold" level="H1"/>
+            	<ToolbarSpacer/> <!-- espaçamento -->
                 <Button id="buttonInicio" text="Inicio" press="onPressInicio"/>
                 <Button id="buttonLocalidades" text="Localidades" press="onPressLocalidades"/>
                 <Button id="buttonVoluntarios" text="Voluntários" press="onPressVoluntarios"/>

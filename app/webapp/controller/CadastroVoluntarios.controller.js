@@ -90,7 +90,7 @@ sap.ui.define([
                         MessageBox.error("Não foi possível buscar os Voluntarios.")
                     }
                 })
-                console.log('alo', that.getView().getModel("Funcoes").getData())
+
 
                 // Pega o id do voluntario
                 var id = this.getRouter().getHashChanger().getHash().split("/")[1];
@@ -119,14 +119,15 @@ sap.ui.define([
                 let voluntario = this.getView().getModel('Voluntario').getData()
 
                 // formata data para salvar corretamente no banco de dados
-                let dataFormatada = voluntario.dataNascimento.split('/')
                 // Se a data estiver no formato dd/mm/aaaa ele formata para aaaa-mm-dd
-                if (dataFormatada[1]) {
+                let dataFormatada
+                if (voluntario.dataNascimento.split('/')[1]) {
+                    dataFormatada = voluntario.dataNascimento.split('/')
                     dataFormatada = dataFormatada[2] + '-' + dataFormatada[1] + '-' + dataFormatada[0]
                 }
                 voluntario = {
                     "nome": voluntario.nome,
-                    "dataNascimento": dataFormatada,
+                    "dataNascimento": dataFormatada ? dataFormatada : voluntario.dataNascimento,
                     "identificacao": voluntario.identificacao,
                     "tipo_ID": Number(voluntario.tipo_ID),
                     "endereco": voluntario.endereco,

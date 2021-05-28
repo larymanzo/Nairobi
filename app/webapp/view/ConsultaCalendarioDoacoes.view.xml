@@ -1,0 +1,38 @@
+<mvc:View 
+controllerName="treinamento.l4e.app.controller.ConsultaCalendarioDoacoes" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+	<Page showHeader="true" title="Consulta das agendas de doações" titleAlignment="Center">
+        <content>
+            <Table mode="Delete" id="tableAgendaDoacoes" delete="onExcluir" items="{path: 'AgendaDoacoes>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Datas de doações" level="H2" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite um ID que deseja procurar" width="50%" liveChange="onSearch" ></SearchField>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="ID" level="H1"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Recolhimento de doações" design="Bold"></Label>
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem type="Detail" detailPress="onNavEditarAgendaDoacoes">
+                        <cells>
+                            <Text text="{AgendaDoacoes>ID}"></Text>
+                            <Text text="{AgendaDoacoes>data}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

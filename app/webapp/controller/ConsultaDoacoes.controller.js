@@ -14,35 +14,60 @@ sap.ui.define([
 		return BaseController.extend("treinamento.l4e.app.controller.ConsultaDoacoes", {
 			onInit: function () {
                 this.getRouter().getRoute("ConsultaDoacoes").attachPatternMatched(this.handleRouteMatched, this);
-
             },
             
             handleRouteMatched: async function(){
+                
                 var that = this;
-                // Busca todos as Doacoes cadastrados (GET)
+                // Busca todas os voluntários
+                var voluntarios
                 await
                 $.ajax({
-                    "url": "/apiNairobi/api/DoacoesSet",
+                    "url": "/apiNairobi/VoluntariosSet",
                     "method": "GET",
                     success(data){
-                        that.getView().setModel(new JSONModel(data.value), "Doacoes")
+                        voluntarios = data.value
+                        that.getView().setModel(new JSONModel(voluntarios), "Voluntarios")
                     },
                     error(){
-                        MessageBox.error("Não foi possível buscar as Doacoes.")
+                        MessageBox.error("Não foi possível buscar os Voluntarios.")
                     }
+                })  
 
+                // Busca todos as Doacao cadastrados (GET)
+                var doacao
+                await
+                $.ajax({
+                    "url": "/apiNairobi/DoacoesSet",
+                    "method": "GET",
+                    success(data){
+                        doacao = data.value
+                        for (let index in doacao) {
+                            for (let index2 in voluntarios) {
+                                if (doacao[index].voluntario_ID == voluntarios[index2].ID) {
+                                    doacao[index].voluntario = voluntarios[index2].nome
+                                }
+                            }
+                        }
+                        console.log(doacao)
+                        that.getView().setModel(new JSONModel(doacao), "Doacoes")
+                    },
+                    error(){
+                        MessageBox.error("Não foi possível buscar as Doações.")
+                    }
                 })
+
             },
             
             // Função do botão 'Excluir'
             onExcluir: async function(oEvent){
-                var id = oEvent.getParameter('listItem').getBindingContext("Doacoes").getObject().id; // pega o ID do Doacoe selecionado
+                var id = oEvent.getParameter('listItem').getBindingContext("Doacoes").getObject().ID; // pega o ID selecionado
                 this.getView().setBusy(true);
 
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/apiNairobi/api/DoacoesSet/${id}`,
+                    "url": `/apiNairobi/DoacoesSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")
@@ -59,8 +84,8 @@ sap.ui.define([
 
             // Função do botão editar da tabela
             onNavEditarDoacoe: function(oEvent){
-                var doacoesId = oEvent.getSource().getBindingContext("Doacoes").getObject().id; // pega o id do Doacoe selecionado
-                this.getRouter().navTo("EditarDoacoes", {id: doacoesId}); // chama a rota de edição passando o id do Doacoe selecionado
+                var doacaoId = oEvent.getSource().getBindingContext("Doacoes").getObject().ID; // pega o id da doação selecionado
+                this.getRouter().navTo("EditarDoacoes", {id: doacaoId}); // chama a rota de edição passando o id do Voluntario selecionado
             },
 
             // Função do campo de busca (SearchField)

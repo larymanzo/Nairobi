@@ -1,0 +1,38 @@
+<mvc:View 
+controllerName="treinamento.l4e.app.controller.ConsultaCalendarioEntregas" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+	<Page showHeader="true" title="Consulta das agendas de entregas" titleAlignment="Center">
+        <content>
+            <Table mode="Delete" id="tableCalendario" delete="onExcluir" items="{path: 'Calendario>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Datas de entregas" level="H2" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite um tipo que deseja procurar" width="50%" liveChange="onSearch" ></SearchField>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Entrega de marmita" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Recolhimento de doações" design="Bold"></Label>
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem type="Detail" detailPress="onNavEditarAgendaEntregas">
+                        <cells>
+                            <Text text="{Calendario>ID}"></Text>
+                            <Text text="{Calendario>data}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

@@ -11,46 +11,46 @@ sap.ui.define([
 	function (BaseController, JSONModel, MessageBox, Filter, FilterOperator) {
 		"use strict";
 
-		return BaseController.extend("treinamento.l4e.app.controller.ConsultaLocalidade", {
+		return BaseController.extend("treinamento.l4e.app.controller.ConsultaCalendarioDoacoes", {
 			onInit: function () {
-                this.getRouter().getRoute("ConsultaLocalidade").attachPatternMatched(this.handleRouteMatched, this);
+                this.getRouter().getRoute("ConsultaCalendarioDoacoes").attachPatternMatched(this.handleRouteMatched, this);
+
             },
             
             handleRouteMatched: async function(){
-                
+                console.log('entrou')
                 var that = this;
-                // Busca todos as Localidades cadastrados (GET)
-                var localidade
+                // Busca todos as Doacoes cadastrados (GET)
                 await
                 $.ajax({
-                    "url": "/apiNairobi/LocalidadesSet",
+                    "url": "/apiNairobi/AgendaDoacoesSet",
                     "method": "GET",
                     success(data){
-                        localidade = data.value
-                        that.getView().setModel(new JSONModel(localidade), "Localidade")
+                        console.log(data.value)
+                        that.getView().setModel(new JSONModel(data.value), "AgendaDoacoes")
                     },
                     error(){
-                        MessageBox.error("Não foi possível buscar as Localidades.")
+                        MessageBox.error("Não foi possível buscar calendários.")
                     }
-                })
 
+                })
             },
             
             // Função do botão 'Excluir'
             onExcluir: async function(oEvent){
-                var id = oEvent.getParameter('listItem').getBindingContext("Localidade").getObject().ID; // pega o ID do Voluntario selecionado
+                var id = oEvent.getParameter('listItem').getBindingContext("AgendaDoacoes").getObject().ID; // pega o ID do Doacoe selecionado
                 this.getView().setBusy(true);
 
                 // Método DELETE para deletar um registro 
                 await
                 $.ajax({
-                    "url": `/apiNairobi/LocalidadesSet/${id}`,
+                    "url": `/apiNairobi/AgendaDoacoesSet/${id}`,
                     "method": "DELETE",
                     success(data){
                         MessageBox.success("Excluído com sucesso!")
                     },
                     error(){
-                        MessageBox.error("Não foi possível excluir a Localidade.")
+                        MessageBox.error("Não foi possível excluir a Doação.")
                     }
 
                 });
@@ -60,9 +60,9 @@ sap.ui.define([
             },
 
             // Função do botão editar da tabela
-            onNavEditarLocalidade: function(oEvent){
-                var localidadeId = oEvent.getSource().getBindingContext("Localidade").getObject().ID; // pega o id do voluntario selecionado
-                this.getRouter().navTo("EditarLocalidade", {id: localidadeId}); // chama a rota de edição passando o id do Voluntario selecionado
+            onNavEditarAgendaDoacoes: function(oEvent){
+                var agendaDoacoesId = oEvent.getSource().getBindingContext("AgendaDoacoes").getObject().ID; // pega o id do Doacoe selecionado
+                this.getRouter().navTo("EditarCalendarioDoacoes", {id: agendaDoacoesId}); // chama a rota de edição passando o id do Doacoe selecionado
             },
 
             // Função do campo de busca (SearchField)
@@ -74,7 +74,7 @@ sap.ui.define([
                     aFilters.push(filter);
                 }
 
-                var oList = this.byId("tableLocalidade");
+                var oList = this.byId("tableAgendaDoacoes");
                 var oBinding = oList.getBinding("items");
                 oBinding.filter(aFilters, "Application");
             }

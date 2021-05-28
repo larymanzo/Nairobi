@@ -1,11 +1,11 @@
 <mvc:View 
-controllerName="treinamento.l4e.app.controller.ConsultaDoacoes" 
+controllerName="treinamento.l4e.app.controller.ConsultaLocalidade" 
 xmlns:mvc="sap.ui.core.mvc" 
 displayBlock="true" 
 xmlns="sap.m">
 	<Page showHeader="true" title="Consulta de Localidade" titleAlignment="Center">
         <content>
-            <Table mode="Delete" id="tableLocalidade" delete="onExcluir" items="{path: 'Doacoes>/'}">
+            <Table mode="Delete" id="tableLocalidade" delete="onExcluir" items="{path: 'Localidade>/'}">
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
@@ -30,12 +30,12 @@ xmlns="sap.m">
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Detail" detailPress="onNavEditarDoacoe">
+                    <ColumnListItem type="Detail" detailPress="onNavEditarLocalidade">
                         <cells>
-                            <Text text="{Doacoes>id}"></Text>
-                            <Text text="{Doacoes>localidade}"></Text>
-                            <Text text="{Doacoes>pessoas}"></Text>
-                            <Text text="{Doacoes>animais}"></Text>
+                            <Text text="{Localidade>ID}"></Text>
+                            <Text text="{Localidade>local}"></Text>
+                            <Text text="{Localidade>nPessoas}"></Text>
+                            <Text text="{Localidade>nAnimais}"></Text>
                             <ObjectStatus text="{= ${Doacoes>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Doacoes>status} === 'A' ? 'Success' : 'Error'}"></ObjectStatus>
                         </cells>
                     </ColumnListItem>

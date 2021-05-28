@@ -1,11 +1,11 @@
 <mvc:View
-	controllerName="treinamento.l4e.app.controller.Inicio"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:grid="sap.ui.layout.cssgrid"
-	xmlns:core="sap.ui.core">
-	<Page showHeader="true" titleAlignment="Center">
-    <content>
+controllerName="treinamento.l4e.app.controller.Inicio"
+xmlns="sap.m"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:grid="sap.ui.layout.cssgrid"
+xmlns:core="sap.ui.core">
+<Page showHeader="true" titleAlignment="Center">
+<content>
     <Panel
 		id="gridLayout"
 		width="100%"
@@ -13,20 +13,28 @@
 		<headerToolbar >
 			<OverflowToolbar height="3rem">
                 <ToolbarSpacer/>
-				<Title text=" Para o dia de hoje: {dataAtual>/data}"/>
+				<Title text=" Hoje é dia: {dataAtual>/data}"/>
                 <ToolbarSpacer/>
 			</OverflowToolbar>
 		</headerToolbar>
 
-		<grid:CSSGrid
-			id="grid1"
-			gridTemplateColumns="1fr 2fr 1fr"
-			gridTemplateRows="50px 200px 50px"
-			gridGap="1rem">
-			<core:HTML content='&lt;aside  class=&quot;stylePageLayout&quot;&gt;Recolhimento de doações &lt;/aside &gt;' />
-			<core:HTML content='&lt;article class=&quot;stylePageLayout&quot;&gt;Entregas&lt;/article&gt;' />
-		</grid:CSSGrid>
+        <FlexBox
+            height="100px"
+            alignItems="Start"
+            justifyContent="Center">
+        
+		<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Data recolhimento das doações" press="onPressConsultaCalendarioDoacoes">
+		<TileContent>
+			<ImageContent src="sap-icon://calendar" />
+		</TileContent>
+	    </GenericTile>
+        	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Consulta de entregas" press="onPressConsultaCalendarioEntregas">
+		<TileContent>
+			<ImageContent src="sap-icon://calendar" />
+		</TileContent>
+	    </GenericTile>
+        </FlexBox>
 	</Panel>
-    </content>
-    </Page>
+</content>
+</Page>
 </mvc:View>

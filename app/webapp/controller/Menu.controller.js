@@ -98,12 +98,12 @@ sap.ui.define([
                 this.getRouter().navTo("ConsultaLocalidade")
             },
 
-            onPressCadastroCalendario: function(){
-                this.getRouter().navTo("CadastroCalendario");
+            onPressCadastroCalendarioDoacoes: function(){
+                this.getRouter().navTo("CadastroCalendarioDoacoes");
             },
 
-            onPressConsultaCalendario: function(){
-                this.getRouter().navTo("ConsultaCalendario")
-            }
+            onPressCadastroCalendarioEntregas: function(){
+                this.getRouter().navTo("CadastroCalendarioEntregas");
+            },
 		});
 	});

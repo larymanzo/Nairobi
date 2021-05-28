@@ -25,10 +25,17 @@ sap.ui.define([
                      data: dataFormatada
                  }),'dataAtual');               
              },
+            onPressConsultaCalendarioDoacoes: function(){
+                this.getRouter().navTo("ConsultaCalendarioDoacoes")
+            },
 
-				onSliderMoved: function (oEvent) {
-			var fValue = oEvent.getParameter("value");
-			this.byId("gridLayout").setWidth(fValue + "%");
-        }
+            onPressConsultaCalendarioEntregas: function(){
+                this.getRouter().navTo("ConsultaCalendarioEntregas")
+            },
+
+			onSliderMoved: function (oEvent) {
+			    var fValue = oEvent.getParameter("value");
+			    this.byId("gridLayout").setWidth(fValue + "%");
+            }
     });
 });

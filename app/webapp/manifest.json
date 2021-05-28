@@ -139,18 +139,33 @@
                     "target": ["Menu", "CadastroLocalidade"]
                 },
                 {
-                    "name": "CadastroCalendario",
-                    "pattern": "CadastroCalendario",
+                    "name": "CadastroCalendarioDoacoes",
+                    "pattern": "CadastroCalendarioDoacoes",
                     "target": ["Menu", "CadastroCalendario"]
                 },
                 {
-                    "name": "ConsultaCalendario",
-                    "pattern": "ConsultaCalendario",
-                    "target": ["Menu", "ConsultaCalendario"]
+                    "name": "CadastroCalendarioEntregas",
+                    "pattern": "CadastroCalendarioEntregas",
+                    "target": ["Menu", "CadastroCalendario"]
                 },
                 {
-                    "name": "EditarCalendario",
-                    "pattern": "EditarCalendario/{id}",
+                    "name": "ConsultaCalendarioDoacoes",
+                    "pattern": "ConsultaCalendarioDoacoes",
+                    "target": ["Menu", "ConsultaCalendarioDoacoes"]
+                },
+                {
+                    "name": "EditarCalendarioDoacoes",
+                    "pattern": "EditarCalendarioDoacoes/{id}",
+                    "target": ["Menu", "CadastroCalendario"]
+                },
+                {
+                    "name": "ConsultaCalendarioEntregas",
+                    "pattern": "ConsultaCalendarioEntregas",
+                    "target": ["Menu", "ConsultaCalendarioEntregas"]
+                },
+                {
+                    "name": "EditarCalendarioEntregas",
+                    "pattern": "EditarCalendarioEntregas/{id}",
                     "target": ["Menu", "CadastroCalendario"]
                 }
 
@@ -250,12 +265,22 @@
                     "parent": "Menu",
                     "controlId": "ConteudoMenu"
                 },
-                "ConsultaCalendario": {
+                "ConsultaCalendarioDoacoes": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "consultaCalendario",
-                    "viewName": "ConsultaCalendario",
+					"viewId": "consultaCalendarioDoacoes",
+                    "viewName": "ConsultaCalendarioDoacoes",
+                    "controlAggregation": "pages",
+                    "parent": "Menu",
+                    "controlId": "ConteudoMenu"
+                },
+                "ConsultaCalendarioEntregas": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "consultaCalendarioEntregas",
+                    "viewName": "ConsultaCalendarioEntregas",
                     "controlAggregation": "pages",
                     "parent": "Menu",
                     "controlId": "ConteudoMenu"

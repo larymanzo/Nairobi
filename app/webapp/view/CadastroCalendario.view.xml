@@ -5,20 +5,12 @@ xmlns:mvc="sap.ui.core.mvc"
 displayBlock="true" 
 xmlns="sap.m">
 
-    <Page showHeader="true" title="Cadastro de Calendário" titleAlignment="Center">
+    <Page showHeader="true" title="{title>/title}" titleAlignment="Center">
         <content>
             <form:SimpleForm title="Informações de Calendário" editable="true">
-                 <Label text="Data de recolhimento das doações"></Label>
-                    <DatePicker>
-                    </DatePicker>
-
-                <Label text="Data de entrega das marmitas"></Label>
-                    <DatePicker>
-                    </DatePicker>
-
-                <Label text="Data para cadastrar de necessitados"></Label>
-                    <DatePicker>
-                    </DatePicker>
+                <Label text="{title>/texto}"></Label>
+                <DatePicker value="{Calendario>/data}">
+                </DatePicker>
 
             </form:SimpleForm>
         </content>
